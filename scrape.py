@@ -48,7 +48,7 @@ def scrape_pictures(thread, foldS, desiredS):
 
             filename = get_file_path(url.rsplit('/', 1)[-1])
 
-            h = httplib2.Http('.cache' + thread)
+            h = httplib2.Http('cache/.cache' + thread)
             response, content = h.request(url)
             out = open(filename, 'wb')
             out.write(content)
@@ -75,16 +75,12 @@ def stopScript():
         return False
 
 
-def deleteCacheFolders():
-    print("Deleting folders")
-    for i in range(1, int(THREAD_AMOUNT)+1):
-        try:
-            shutil.rmtree('.cache'+str(i))
-        except OSError as e:
-            print("Error: %s : %s" % ('.cache'+str(i), e.strerror))
+def deleteCacheFolder():
+    print("Deleting cache folder")
+    shutil.rmtree("cache", ignore_errors=True)
 
 
-timeOut = Timer(4, deleteCacheFolders)
+timeOut = Timer(4, deleteCacheFolder)
 
 
 for thread in range(1, THREAD_AMOUNT + 1):
