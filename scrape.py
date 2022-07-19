@@ -22,7 +22,7 @@ START = True
 DIR_NAME = "pics"
 
 INVALID_SIZES = [0, 503, 543, 5082, 4939, 4940,
-                 4941, 12003, 5556, 5553, 6217, 6218, 6426, 8192]
+                 4941, 12003, 5556, 5553, 6167, 6217, 6218, 6426, 8192]
 
 if not os.path.isdir(DIR_NAME):
     os.makedirs(DIR_NAME)
